@@ -5,10 +5,16 @@
  * URI		: https://www.derillab.com
  */
 
-require 'lib/setup.php';
 
+if (file_exists('config.php')) {
+	require 'lib/setup.php';
+}else{
 
+	$protocol=$_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https://' : 'http://';
+	
+	$secure_url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	header('Location: ' . $secure_url.'/install/install.php');
+	exit();
+}
 
-
-// $insert = $DB->execute("INSERT INTO {popupads_log} (userid,code,title,content,timecreated) VALUES (?, ?, ?, ?, ?)",array(2,'1234123','1234123','1234123',strtotime(date('Y-m-d'))));
 

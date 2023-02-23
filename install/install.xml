@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <database name="example_db">
+        <table name="posts">
+            <structure>
+                (
+                `id` int(10) NOT NULL AUTO_INCREMENT,
+                `title` text NOT NULL,
+                `content` text NOT NULL,
+                `url` text NOT NULL,
+                `timecreated` text NOT NULL,
+                `author` int(10) NOT NULL,
+                PRIMARY KEY (`id`)
+                )
+            </structure>
+            <data>
+                <row>
+                    <field name="id">1</field>
+                    <field name="title">Judul Konten 1</field>
+                    <field name="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem.</field>
+                    <field name="url">judul-kontent-1</field>
+                    <field name="timecreated">1632406597</field>
+                    <field name="author">1</field>
+                </row>
+                <row>
+                    <field name="id">2</field>
+                    <field name="title">Judul Konten 2</field>
+                    <field name="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem.</field>
+                    <field name="timecreated">1632406597</field>
+                    <field name="author">1</field>
+                </row>
+            </data>
+        </table>
+
+        <table name="themes">
+            <structure>
+                (
+                `id` int(10) NOT NULL AUTO_INCREMENT,
+                `name` text NOT NULL,
+                `path` text NOT NULL,
+                `timecreated` text NOT NULL,
+                `status` int(11) NOT NULL,
+                PRIMARY KEY (`id`)
+                )
+            </structure>
+
+            <data>
+                <row>
+                    <field name="id">1</field>
+                    <field name="name">Basic Template</field>
+                    <field name="path">basic</field>
+                    <field name="timecreated">1632406597</field>
+                    <field name="status">1</field>
+                </row>
+            </data>
+        </table>
+    </database>
+</mysqldump>
