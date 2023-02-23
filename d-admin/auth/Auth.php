@@ -80,3 +80,8 @@ function curreSess($value='')
 
 }
 
+function logout($value='')
+{
+	setcookie('TOKEN-CMS','LOGOUT');
+}
+
