@@ -30,7 +30,7 @@ function putconfig($host,$dbname,$username,$password,$prefix,$baseurl)
 	$config_file_content .= "global \$CFG;\n";
 	$config_file_content .= "\$CFG = new stdClass();\n\n";
 
-	$config_file_content .= "\$CFG->dbdriver    = 'pdo';\n";
+	$config_file_content .= "\$CFG->dbdriver  = 'pdo';\n";
 	$config_file_content .= "\$CFG->dbtype    = 'mysql'; //mysql or pgsql\n";
 	$config_file_content .= "\$CFG->dbhost    = '{$config_values['db_host']}';\n";
 	$config_file_content .= "\$CFG->dbname    = '{$config_values['db_name']}';\n";
@@ -38,10 +38,10 @@ function putconfig($host,$dbname,$username,$password,$prefix,$baseurl)
 	$config_file_content .= "\$CFG->dbpass    = '{$config_values['db_password']}';\n";
 	$config_file_content .= "\$CFG->prefix    = '{$config_values['db_prefix']}';\n";
 	$config_file_content .= "\$CFG->dboptions = array (\n";
-	$config_file_content .= " 'dbpersist' => 0,\n";
-	$config_file_content .= " 'dbport' => '',\n";
-	$config_file_content .= "'dbsocket' => '',\n";
-	$config_file_content .= " 'dbcollation' => 'utf8mb4_general_ci',\n";
+	$config_file_content .= "	'dbpersist' => 0,\n";
+	$config_file_content .= "	'dbport' => '',\n";
+	$config_file_content .= "	'dbsocket' => '',\n";
+	$config_file_content .= "	'dbcollation' => 'utf8mb4_general_ci',\n";
 	$config_file_content .= ");\n\n";
 
 
