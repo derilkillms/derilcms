@@ -53,20 +53,30 @@ function verifyJWT($token, $secret_key){
     }
 }
 
-$user_id = 1;
-$user_email = "user@example.com";
-$token = generateJWT($user_id, $user_email, $secret_key);
 
-setcookie('TOKEN-CMS',$token);
+function login($value='')
+{
+	
+	$user_id = 1;
+	$user_email = "user@example.com";
+	$token = generateJWT($user_id, $user_email, $secret_key);
 
-if ($_COOKIE['TOKEN-CMS']) {
-	$payload = verifyJWT($_COOKIE['TOKEN-CMS'], $secret_key);
-	if ($payload) {
-		echo "login";
+}
+
+
+function curreSess($value='')
+{
+	if ($_COOKIE['TOKEN-CMS']) {
+		$payload = verifyJWT($_COOKIE['TOKEN-CMS'], $secret_key);
+		if ($payload) {
+			echo "login";
     // token is valid
-	} else {
+		} else {
     // token is invalid or has expired
-		echo "logout";
+			echo "logout";
+		}
+
 	}
 
 }
+
