@@ -1,4 +1,9 @@
 <?php
+/**
+ * Author   : Muhammad Deril
+ * URI      : http://www.derillab.com
+ * Github   : @derilkillms
+ */
 
 function putconfig($host,$dbname,$username,$password,$prefix,$baseurl)
 {
