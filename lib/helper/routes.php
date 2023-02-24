@@ -11,8 +11,6 @@ class Routes
 	public $page = 'posts';
 	public $params =[];
 
-	// public $header = require_once 'pages/partials/header.php';
-
 	public function __construct(){
 		GLOBAL $CFG, $DB, $mustache;
 		$url = $this->parseURL();
@@ -31,18 +29,13 @@ class Routes
 					$this->page = $url[0];
 					unset($url[0]);
 				}
-			}
-
-			
+			}	
 
 		}
 
 		$this->params = $url;
 
-
-
 		require_once 'pages/'.$this->page.'.php';
-
 
 	}
 

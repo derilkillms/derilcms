@@ -25,7 +25,7 @@
 
       input[type=submit] {
         width: 100%;
-        background-color: #4CAF50;
+        background-color: #93959c;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
@@ -35,7 +35,7 @@
       }
 
       input[type=submit]:hover {
-        background-color: #45a049;
+        background-color: #73757c;
       }
 
       div {
@@ -93,7 +93,7 @@
 
 
 
-          <input type="submit" value="Submit">
+          <input type="submit" value="Install">
         </form>
       </div>
 
