@@ -64,7 +64,7 @@
     	}
 
         $stmt = $dbh->prepare("INSERT INTO ".$INSTALL->dbprefix."user (`fullname`, `username`, `password`, `email`, `lastlogin`, `createdate`, `status`) VALUES
-            ('".$INSTALL->fullname."', '".$INSTALL->wbuser."', md5('".$INSTALL->wbpass."'), '".$INSTALL->wbemail."', '', '', '1')");
+            ('".$INSTALL->fullname."', '".$INSTALL->wbuser."', md5('".$INSTALL->wbpass."'), '".$INSTALL->wbemail."', UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), '1')");
         $stmt->execute();
 
         return "Database imported successfully.";

@@ -6,6 +6,11 @@
  */
 
 
+if (!file_exists('../config.php')) {
+	echo "Install first";
+	die();
+}
+
 require_once '../config.php';
 
 require_once './Auth/auth.php';
