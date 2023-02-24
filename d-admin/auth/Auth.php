@@ -54,18 +54,31 @@ function verifyJWT($token, $secret_key){
 }
 
 
-function login($value='')
+function login($username='',$password='')
 {
+	GLOBAL $DB, $CFG, $secret_key;
+
+	$datauser = $DB->get_record_sql("SELECT * FROM {user} WHERE username='".$username."' AND password=md5('".$password."')");
 	
-	$user_id = 1;
-	$user_email = "user@example.com";
-	$token = generateJWT($user_id, $user_email, $secret_key);
+	if (!empty($datauser->id)) {
+
+		$user_id = $datauser->id;
+		$user_email =$datauser->email;
+		$token = generateJWT($user_id, $user_email, $secret_key);
+
+		return true;
+	}else{
+		return false;
+	}
+	
 
 }
 
 
-function curreSess($value='')
+function curreSess()
 {
+	GLOBAL $DB, $CFG, $secret_key;
+
 	if ($_COOKIE['TOKEN-CMS']) {
 		$payload = verifyJWT($_COOKIE['TOKEN-CMS'], $secret_key);
 		if ($payload) {
@@ -73,14 +86,14 @@ function curreSess($value='')
     // token is valid
 		} else {
     // token is invalid or has expired
-			echo "logout";
+			header('Location: login.php');
 		}
 
 	}
 
 }
 
-function logout($value='')
+function logout()
 {
 	setcookie('TOKEN-CMS','LOGOUT');
 }

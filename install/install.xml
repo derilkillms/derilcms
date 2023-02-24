@@ -54,5 +54,21 @@
                 </row>
             </data>
         </table>
+
+        <table name="user">
+            <structure>
+                (
+                `id` int(15) NOT NULL AUTO_INCREMENT,
+                `fullname` text NOT NULL,
+                `username` varchar(25) NOT NULL,
+                `password` text NOT NULL,
+                `email` text  NOT NULL,
+                `lastlogin` text NOT NULL,
+                `createdate` text NOT NULL,
+                `status` int(5)  NOT NULL,
+                PRIMARY KEY (`id`)
+                )
+            </structure>
+        </table>
     </database>
 </mysqldump>

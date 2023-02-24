@@ -7,22 +7,22 @@
  * Github   : @derilkillms
  */
 
-    function generatedb($host,$dbname,$username,$password,$prefix)
+    function generatedb($INSTALL)
     {
     	
 // Set XML file path
     	$xml_file_path = 'install.xml';
 
     	try {
-    		$dbh = new PDO("mysql:host=$host", $username, $password);
+    		$dbh = new PDO("mysql:host=$INSTALL->host", $INSTALL->dbuser, $INSTALL->dbpass);
     		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Create the database
-    		$dbh->exec("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+    		$dbh->exec("CREATE DATABASE IF NOT EXISTS `$INSTALL->dbname` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
 
 
     		try {
-    			$dbh = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    			$dbh = new PDO("mysql:host=$INSTALL->host;dbname=$INSTALL->dbname", $INSTALL->dbuser, $INSTALL->dbpass);
     			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     			
     		} catch (PDOException $e) {
@@ -39,7 +39,7 @@
 
 // Iterate through the tables in the XML file and import them into the database
     	foreach ($xml->database->table as $table) {
-    		$table_name = (string) $prefix.$table['name'];
+    		$table_name = (string) $INSTALL->dbprefix.$table['name'];
     		$create_table_sql = (string) $table->structure;
 
     // Create the table if it doesn't already exist
@@ -63,5 +63,9 @@
     		}
     	}
 
-    	return "Database imported successfully.";
+        $stmt = $dbh->prepare("INSERT INTO ".$INSTALL->dbprefix."user (`fullname`, `username`, `password`, `email`, `lastlogin`, `createdate`, `status`) VALUES
+            ('".$INSTALL->fullname."', '".$INSTALL->wbuser."', md5('".$INSTALL->wbpass."'), '".$INSTALL->wbemail."', '', '', '1')");
+        $stmt->execute();
+
+        return "Database imported successfully.";
     }

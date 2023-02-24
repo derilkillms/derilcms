@@ -5,16 +5,16 @@
  * Github   : @derilkillms
  */
 
-function putconfig($host,$dbname,$username,$password,$prefix,$baseurl)
+function putconfig($INSTALL)
 {
 	// Set configuration values
 	$config_values = array(
-		'db_host' => $host,
-		'db_name' => $dbname,
-		'db_user' => $username,
-		'db_password' => $password,
-		'db_prefix' => $prefix,
-		'wb_baseurl' => $baseurl
+		'db_host' => $INSTALL->host,
+		'db_name' => $INSTALL->dbname,
+		'db_user' => $INSTALL->dbuser,
+		'db_password' => $INSTALL->dbpass,
+		'db_prefix' => $INSTALL->dbprefix,
+		'wb_baseurl' => $INSTALL->baseurl
 	);
 
 // Generate the configuration file content
