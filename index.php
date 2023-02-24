@@ -1,6 +1,6 @@
 <?php
 /**
- * DX FRAMEWORK
+ * DERIL CMS
  * Author	: Muhammad Deril
  * URI		: https://www.derillab.com
  */
